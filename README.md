@@ -1,4 +1,4 @@
-# GSOC-Backend
+#LibreHealth GSOC-Backend
 Django Rest Backend for serving Tensorflow models for **Libre Health**
 
 *Installation process*
