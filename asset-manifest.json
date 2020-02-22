@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/GSOC-Backend/static/css/main.d1b05096.chunk.css",
+    "main.js": "/GSOC-Backend/static/js/main.9e8729b7.chunk.js",
+    "main.js.map": "/GSOC-Backend/static/js/main.9e8729b7.chunk.js.map",
+    "runtime-main.js": "/GSOC-Backend/static/js/runtime-main.722ef095.js",
+    "runtime-main.js.map": "/GSOC-Backend/static/js/runtime-main.722ef095.js.map",
+    "static/js/2.d61376a9.chunk.js": "/GSOC-Backend/static/js/2.d61376a9.chunk.js",
+    "static/js/2.d61376a9.chunk.js.map": "/GSOC-Backend/static/js/2.d61376a9.chunk.js.map",
+    "index.html": "/GSOC-Backend/index.html",
+    "precache-manifest.d620831ae12425685ce12d045e7c4b19.js": "/GSOC-Backend/precache-manifest.d620831ae12425685ce12d045e7c4b19.js",
+    "service-worker.js": "/GSOC-Backend/service-worker.js",
+    "static/css/main.d1b05096.chunk.css.map": "/GSOC-Backend/static/css/main.d1b05096.chunk.css.map",
+    "static/js/2.d61376a9.chunk.js.LICENSE.txt": "/GSOC-Backend/static/js/2.d61376a9.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/GSOC-Backend/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.722ef095.js",
+    "static/js/2.d61376a9.chunk.js",
+    "static/css/main.d1b05096.chunk.css",
+    "static/js/main.9e8729b7.chunk.js"
+  ]
+}
