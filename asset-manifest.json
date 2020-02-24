@@ -1,19 +1,19 @@
 {
   "files": {
-    "main.js": "/GSOC-Backend/static/js/main.8bf40873.chunk.js",
-    "main.js.map": "/GSOC-Backend/static/js/main.8bf40873.chunk.js.map",
+    "main.js": "/GSOC-Backend/static/js/main.d170f037.chunk.js",
+    "main.js.map": "/GSOC-Backend/static/js/main.d170f037.chunk.js.map",
     "runtime-main.js": "/GSOC-Backend/static/js/runtime-main.722ef095.js",
     "runtime-main.js.map": "/GSOC-Backend/static/js/runtime-main.722ef095.js.map",
-    "static/js/2.66672295.chunk.js": "/GSOC-Backend/static/js/2.66672295.chunk.js",
-    "static/js/2.66672295.chunk.js.map": "/GSOC-Backend/static/js/2.66672295.chunk.js.map",
+    "static/js/2.3b4821c4.chunk.js": "/GSOC-Backend/static/js/2.3b4821c4.chunk.js",
+    "static/js/2.3b4821c4.chunk.js.map": "/GSOC-Backend/static/js/2.3b4821c4.chunk.js.map",
     "index.html": "/GSOC-Backend/index.html",
-    "precache-manifest.0e2d03d74c677ecd401d30cf289d226c.js": "/GSOC-Backend/precache-manifest.0e2d03d74c677ecd401d30cf289d226c.js",
+    "precache-manifest.bdf738fc0df523972ce67dcbb786d681.js": "/GSOC-Backend/precache-manifest.bdf738fc0df523972ce67dcbb786d681.js",
     "service-worker.js": "/GSOC-Backend/service-worker.js",
-    "static/js/2.66672295.chunk.js.LICENSE.txt": "/GSOC-Backend/static/js/2.66672295.chunk.js.LICENSE.txt"
+    "static/js/2.3b4821c4.chunk.js.LICENSE.txt": "/GSOC-Backend/static/js/2.3b4821c4.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.722ef095.js",
-    "static/js/2.66672295.chunk.js",
-    "static/js/main.8bf40873.chunk.js"
+    "static/js/2.3b4821c4.chunk.js",
+    "static/js/main.d170f037.chunk.js"
   ]
 }
