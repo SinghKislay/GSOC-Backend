@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "dbd7201665b22d4c303c17b315a96141",
+    "revision": "5dd8e8f5c708f4c369f63db52c867117",
     "url": "/GSOC-Backend/index.html"
   },
   {
@@ -12,8 +12,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/GSOC-Backend/static/js/2.3b4821c4.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "b9cf447212019281040d",
-    "url": "/GSOC-Backend/static/js/main.d170f037.chunk.js"
+    "revision": "6d8b53efb348856c57e7",
+    "url": "/GSOC-Backend/static/js/main.a2780899.chunk.js"
   },
   {
     "revision": "53ae2694555f9ade10c7",
