@@ -14,17 +14,15 @@ dataset = create_dataset()
 feature_extractor_url = "https://tfhub.dev/google/imagenet/mobilenet_v2_100_224/feature_vector/4"
 feature_extractor_layer = hub.KerasLayer(feature_extractor_url, input_shape=(224,224,3))
 
-feature_extractor_layer.trainable = False
+feature_extractor_layer.trainable = True
 
 model = tf.keras.Sequential([
     feature_extractor_layer,
     tf.keras.layers.Dense(12, activation='softmax', name='predictions')
 ])
 
-
-
-LR = 1e-5
-EPOCHS = 30
+LR = 1e-6
+EPOCHS = 100
 
 model.compile(
   optimizer=tf.keras.optimizers.Adam(learning_rate=LR),
