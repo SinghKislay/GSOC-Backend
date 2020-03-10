@@ -3,7 +3,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 import tensorflow as tf
 import pandas as pd
-
+import cv2
+import matplotlib.pyplot as plt
 
 CHANNELS = 3
 IMG_SIZE = 224
@@ -24,10 +25,14 @@ def parse_function(filename, label):
     image_resized = tf.image.resize(image_decoded, [IMG_SIZE, IMG_SIZE])
     # Normalize it from [0, 255] to [0.0, 1.0]
     image_normalized = image_resized / 255.0
-    print(image_normalized.shape)
+    print(filename, label)
+
+    #cv2.imshow('', np.array(image_normalized))
+    #cv2.waitKey(0)
+
     return image_normalized, label
 
-BATCH_SIZE = 128
+BATCH_SIZE = 64
 AUTOTUNE = tf.data.experimental.AUTOTUNE
 SHUFFLE_BUFFER_SIZE = 1024
 
@@ -71,6 +76,7 @@ def create_data_path():
         data_path.append(os.path.join("C:/Users/Kislay/Desktop/GSOC/data/sample/images", img_name[0]))
         label_list.append(give_label(img_name[1]))
         
+
     return data_path, label_list
 
 
@@ -98,4 +104,9 @@ def create_dataset( is_training=True):
     # Fetch batches in the background while the model is training.
     dataset = dataset.prefetch(buffer_size=AUTOTUNE)
     
-    return dataset
+    return dataset.repeat(2)
+
+
+
+
+    

@@ -7,7 +7,7 @@ import cv2
 from create_dataset import *
 import tensorflow_hub as hub
 from datetime import datetime
-
+import tensorflow as tf
 
 dataset = create_dataset()
 
