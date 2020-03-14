@@ -6,12 +6,14 @@ import pandas as pd
 import cv2
 import tensorflow_hub as hub
 import tensorflow as tf
+import scipy.misc as sci
 
 new_model = tf.keras.models.load_model('mymodel.h5', custom_objects={'KerasLayer':hub.KerasLayer})
-img = cv2.imread("C:/Users/Kislay/Desktop/GSOC/data/sample/images/00006269_000.png")
+img = cv2.imread("C:/Users/Kislay/Desktop/GSOC/data/sample/images/00006212_005.png")
 img_resized = cv2.resize(img, (224, 224))
 gray_image_3ch = np.stack(img_resized, axis=0)/255
 gray_image_3ch = np.array([gray_image_3ch])
+print(gray_image_3ch.shape)
 
 new_model.summary()
 W = new_model.get_layer('predictions').get_weights()[0]
@@ -43,6 +45,8 @@ mask = cv2.applyColorMap(np.uint8(255*mask), cv2.COLORMAP_JET)
 mask = mask/np.max(mask)
 
 masked_image = np.add(gray_image_3ch, mask)
-plt.imshow(masked_image[0,:,:,:])
+masked_image = np.uint8(masked_image[0,:,:,:]*100)
+print(masked_image)
+plt.imshow(masked_image)
 plt.show()
 
