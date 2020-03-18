@@ -17,15 +17,16 @@ from django.http import JsonResponse
 import base64
 import json
 from matplotlib.pylab import cm
+
 class ImageUnAutheticatedGradView(views.APIView):
 
     def post(self, request):
         print(request.data['image'])
         img = tf.image.decode_png(request.data['image'].read(), channels=3)
         new_model = tf.keras.models.load_model('./../mymodel.h5', custom_objects={'KerasLayer':hub.KerasLayer})
-        img_resized = tf.image.resize(img, [224, 224])/225.0
-        gray_image_3ch = np.array([img_resized])
-        print(gray_image_3ch.shape)
+        img_resized = tf.image.resize(img, [224, 224])
+        gray_image_3ch = np.array([img_resized/225.0])
+        print(img_resized.shape)
         
         W = new_model.get_layer('predictions').get_weights()[0]
 
@@ -59,7 +60,10 @@ class ImageUnAutheticatedGradView(views.APIView):
         m = np.uint8(m)
         #m = cv2.cvtColor(m, cv2.COLOR_RGBA2BGR)
         m = cv2.cvtColor(m, cv2.COLOR_RGBA2RGB)
-        fin = cv2.addWeighted(m, 0.5, img_resized, 0.6, 0)
+        img_resized = np.uint8(img_resized)
+        print(type(img_resized))
+        print(type(m))
+        fin = cv2.addWeighted(m, 0.5, img_resized, 0.5, 0)
         image = Image.fromarray(fin)
 
         response = HttpResponse(content_type="image/png")
