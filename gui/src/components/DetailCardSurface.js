@@ -64,7 +64,7 @@ News.metadata = {
 
 export default function DetailCardSurface(props) {
   const classes = useStyles();
-  const [file, setFile] = useState({imagePreviewUrl:'https://prod-images-static.radiopaedia.org/images/25074603/4994014ef5c834e4803541aa1dc874_jumbo.jpeg'})
+  const [file, setFile] = useState({imagePreviewUrl:'https://img.pngio.com/lungs-sketch-illustration-hand-drawn-animation-transparent-motion-animated-lung-png-1920_1080.png'})
   const [loading, setLoading] = useState(false)
   const [gotpred, setpred] = useState(false)
   const [prediction, setprediction] = useState('Loading')
