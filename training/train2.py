@@ -14,7 +14,7 @@ dataset = create_dataset()
 IMG_SHAPE = (IMG_SIZE, IMG_SIZE, 3)
 
 # Create the base model from the pre-trained model MobileNet V2
-base_model = tf.keras.applications.VGG16(input_shape=IMG_SHAPE,
+base_model = tf.keras.applications.VGG19(input_shape=IMG_SHAPE,
                                                include_top=False,
                                                weights='imagenet')
 '''
@@ -35,6 +35,12 @@ model = tf.keras.Sequential()
 for layer in base_model.layers[:-1]:
     model.add(layer)
 
+datagen =tf.keras.preprocessing.image.ImageDataGenerator(featurewise_center=True,
+    featurewise_std_normalization=True,
+    rotation_range=20,
+    width_shift_range=0.2,
+    height_shift_range=0.2,
+    horizontal_flip=True)
 
 base_model.trainable = False
 global_average_layer = tf.keras.layers.GlobalAveragePooling2D()
@@ -48,8 +54,8 @@ print(model.summary())
 
 
 
-LR = 1e-4
-EPOCHS = 5
+LR = 1e-2
+EPOCHS = 2
 
 
 

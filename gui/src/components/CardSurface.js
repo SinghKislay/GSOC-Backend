@@ -15,27 +15,30 @@ const useStyles = makeStyles(theme=>({
     backgroundColor: theme.palette.primary.main,
   },
   media: {
-    height: 250,
+    height: 500,
+    width:'100%',
+    
   },
 }));
 
-export default function CardSurface() {
+export default function CardSurface(props) {
   const classes = useStyles();
-
+  
   return (
     <Card className={classes.root}>
-      <CardActionArea>
+      
         <CardMedia
           className={classes.media}
-          image="/static/images/cards/contemplative-reptile.jpg"
-          title="Contemplative Reptile"
+          image="https://img.pngio.com/lungs-sketch-illustration-hand-drawn-animation-transparent-motion-animated-lung-png-1920_1080.png"
+          title="X-Ray"
         />
-        <CardContent>
+        <CardActionArea>
+        <CardContent onClick={()=>{props.set(true)}}>
           <Typography color="inherit" gutterBottom variant="h5" component="h2">
-            Disease
+            {props.disease}
           </Typography>
           <Typography variant="body2" color="inherit" component="p">
-          Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop.
+          {props.para}
           </Typography>
         </CardContent>
       </CardActionArea>

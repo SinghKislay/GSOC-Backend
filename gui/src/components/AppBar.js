@@ -101,7 +101,7 @@ function AppBarComp(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Responsive drawer
+            Libre Health
           </Typography>
         </Toolbar>
       </AppBar>
