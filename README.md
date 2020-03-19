@@ -11,11 +11,11 @@ Django Rest Backend for serving Tensorflow models for **Libre Health**
 
 `python manage.py runserver`
 
-Curl command for the api endpoint:
+open another terminal and go the directory
 
-curl --location --request POST 'http://127.0.0.1:8000/api/xray' \
---header 'Content-Type: application/x-www-form-urlencoded' \
---form 'image=@[image_location]'
+`cd gui`
+
+`npm start`
 
 **GUI DEMO URL**
 https://singhkislay.github.io/GSOC-Backend/
