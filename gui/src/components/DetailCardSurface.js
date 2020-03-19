@@ -67,6 +67,7 @@ export default function DetailCardSurface(props) {
   const [file, setFile] = useState({imagePreviewUrl:'https://img.pngio.com/lungs-sketch-illustration-hand-drawn-animation-transparent-motion-animated-lung-png-1920_1080.png'})
   const [loading, setLoading] = useState(false)
   const [gotpred, setpred] = useState(false)
+  const [selected, setselected] = useState(false)
   const [prediction, setprediction] = useState('Loading')
   
   
@@ -122,6 +123,7 @@ export default function DetailCardSurface(props) {
         imagePreviewUrl:reader.result
       })
     }
+    setselected(true);
     reader.readAsDataURL(file)
 
   }
@@ -170,7 +172,16 @@ export default function DetailCardSurface(props) {
       </CardActionArea>
       <CardActions>
       {!loading?
-        <Button onClick={()=>sendXray()} size="medium" color="secondary">
+        <Button onClick={()=>{
+          if(selected){
+            sendXray()
+          }
+          else{
+            alert("Please select a X-ray")
+          }
+          
+          
+          }} size="medium" color="secondary">
           Upload
         </Button>
       :
