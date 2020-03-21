@@ -15,6 +15,10 @@ open another terminal and go the directory
 
 `cd gui`
 
+`npm install`
+
+`npm audit`
+
 `npm start`
 
 **GUI DEMO URL**
