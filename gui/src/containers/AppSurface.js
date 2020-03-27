@@ -21,7 +21,7 @@ export default function AppSurface() {
       <Grid container >
       <Grid  item xs={12} sm={12} md={6} lg={6}>
       <div style={{marginTop:8}}>
-      <CardSurface set={showAll} disease={"pnemonia"} para={para}/>
+      <CardSurface set={showAll} disease={"Thorax Disease"} para={para}/>
       </div>
       </Grid>
       <Grid item xs={12} sm={12} md={6} lg={6}>
@@ -44,7 +44,7 @@ export default function AppSurface() {
       <Grid container >
       <Grid item xs={12} sm={12} md={6} lg={6}>
       <div style={{marginTop:8}}>
-      <DetailCardSurface set={showAll} disease={"pnemonia"} para={para}/>
+      <DetailCardSurface set={showAll} disease={"Thorax Disease"} para={para}/>
       </div>
       </Grid>
       </Grid>

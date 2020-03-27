@@ -70,9 +70,53 @@ export default function DetailCardSurface(props) {
   const [selected, setselected] = useState(false)
   const [prediction, setprediction] = useState('Loading')
   
+  const  sendXrayBB = async () => {
+    
+    var formdata = new FormData();
+    formdata.append("image", file.file, file.file.name);
+
+    var requestOptions = {
+      method: 'POST',
+      headers: {
+        'Accept': 'application/json',
+      },
+      body: formdata,
+      redirect: 'follow'
+  };
+  
+  
+  setLoading(true)
+  await fetch("http://127.0.0.1:8000/api/xray-bbox", requestOptions)
+  .then(res => res.blob())
+  .then(blob => {
+      setLoading(false)
+      setpred(true)
+      console.log(blob)
+      setFile({
+        
+        imagePreviewUrl:URL.createObjectURL(blob)
+      })
+    
+  })
+  .catch(error => console.log('error', error));
+  
+  fetch("http://127.0.0.1:8000/api/xray-bbox-pred", requestOptions)
+  .then(res => res.json())
+  .then(result => {
+      let str = ''
+      let lst = result['pred']
+      for(let i=0; i < lst.length; i++){
+        str = str + lst[i];
+      }
+      setprediction(str)
+    
+  })
+  .catch(error => console.log('error', error));
+  
+  }
   
 
-  const  sendXray = async () => {
+  const  sendXrayGC = async () => {
     
     var formdata = new FormData();
     formdata.append("image", file.file, file.file.name);
@@ -172,9 +216,10 @@ export default function DetailCardSurface(props) {
       </CardActionArea>
       <CardActions>
       {!loading?
+      <div style={{display:'flex'}}>
         <Button onClick={()=>{
           if(selected){
-            sendXray()
+            sendXrayGC()
           }
           else{
             alert("Please select a X-ray")
@@ -182,8 +227,21 @@ export default function DetailCardSurface(props) {
           
           
           }} size="medium" color="secondary">
-          Upload
+          Get GradCam
         </Button>
+        <Button onClick={()=>{
+          if(selected){
+            sendXrayBB()
+          }
+          else{
+            alert("Please select a X-ray")
+          }
+          
+          
+          }} size="medium" color="secondary">
+          Get BBox
+        </Button>
+        </div>
       :
       <></>
       }

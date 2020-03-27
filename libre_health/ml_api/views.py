@@ -1,6 +1,6 @@
 from rest_framework import views
 from rest_framework.response import Response
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 import numpy as np
 import tensorflow as tf
 import cv2
@@ -17,7 +17,11 @@ from django.http import JsonResponse
 import base64
 import json
 from matplotlib.pylab import cm
-
+from yolov3_tf2.models import (
+    YoloV3, YoloV3Tiny
+)
+from yolov3_tf2.dataset import transform_images, load_tfrecord_dataset
+from yolov3_tf2.utils import draw_outputs
 class ImageUnAutheticatedGradView(views.APIView):
 
     def post(self, request):
@@ -90,6 +94,62 @@ class ImageUnAutheticatedPredView(views.APIView):
         print(predictions)
         label = give_label(np.argmax(predictions[0]))
         return HttpResponse(label)
+
+class ImageUnAutheticatedBBoxView(views.APIView):
+
+    def post(self, request):
+        yolo = YoloV3(classes=8)
+
+        yolo.load_weights('./checkpoints/yolov3_train.tf').expect_partial()
+        
+
+        class_names = [c.strip() for c in open('./checkpoints/chestx.names').readlines()]
+        
+
+        img_raw = tf.image.decode_image(
+            request.data['image'].read(), channels=3)
+
+        img = tf.expand_dims(img_raw, 0)
+        img = transform_images(img, 416)
+
+        
+        boxes, scores, classes, nums = yolo(img)
+        
+        img = cv2.cvtColor(img_raw.numpy(), cv2.COLOR_RGB2BGR)
+        img = draw_outputs(img, (boxes, scores, classes, nums), class_names)
+        image = Image.fromarray(img)
+        response = HttpResponse(content_type="image/png")
+        image.save(response, "PNG")
+        return response
+
+class ImageUnAutheticatedBBoxPredView(views.APIView):
+
+    def post(self, request):
+        yolo = YoloV3(classes=8)
+
+        yolo.load_weights('./checkpoints/yolov3_train.tf').expect_partial()
+        
+
+        class_names = [c.strip() for c in open('./checkpoints/chestx.names').readlines()]
+        
+
+        img_raw = tf.image.decode_image(
+            request.data['image'].read(), channels=3)
+
+        img = tf.expand_dims(img_raw, 0)
+        img = transform_images(img, 416)
+
+        
+        boxes, scores, classes, nums = yolo(img)
+        
+        
+
+        arr = []
+        for i in range(nums[0]):
+            arr.append(class_names[int(classes[0][i])])
+        
+        
+        return JsonResponse({'pred':arr})
 
 
 def give_label(num):
