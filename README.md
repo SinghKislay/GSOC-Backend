@@ -1,7 +1,7 @@
 # Libre Health GSOC-Backend
 Django Rest Backend for serving Tensorflow models for **Libre Health**
 
-For cloning the repo you must intall [lfs](https://git-lfs.github.com/). (Large file storage)
+For cloning the repo you must install [lfs](https://git-lfs.github.com/). (Large file storage)
 
 *Installation process*
 
